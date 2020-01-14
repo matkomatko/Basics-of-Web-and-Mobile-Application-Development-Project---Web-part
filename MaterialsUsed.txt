@@ -1,3 +1,9 @@
-Videos used to learn javascript, fetch() and json
+Used to learn about javascript, bootstrap, fetch(), await, async and json
 https://www.youtube.com/watch?v=IHjzyhjKxtc
 https://www.youtube.com/watch?v=tc8DU14qX6I
+https://www.youtube.com/watch?v=uxf0--uiX0I&t=779s
+https://www.w3schools.com/
+
+
+
+
