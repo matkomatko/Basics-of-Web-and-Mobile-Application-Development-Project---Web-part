@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Make a table based on JSON data.</h2>
+
+<p id="demo">a</p>
+
+<script>
+var x = 7;
+
+
+var url = 'https://newsapi.org/v2/top-headlines?' +
+          'country=us&' +
+          'apiKey=0f2a5abc1ac1464fafb1ba014d50e0ea';
+//var req = new Request(url);
+
+
+// fetch(req).then(response => 
+// {
+//     console.log(response);
+//     return response.json();
+// }).then(response => 
+// {
+//     console.log(response);
+//     document.getElementById('demo').innerTEXT = response;    
+// });
+
+async function getNews()
+{
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    document.getElementById('demo').innerHTML = data.totalResults;    
+}
+
+getNews();
+
+</script>
+
+</body>
+</html>
