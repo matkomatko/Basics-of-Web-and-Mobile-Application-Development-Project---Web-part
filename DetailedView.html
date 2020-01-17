@@ -10,27 +10,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <style>
-    a:link,
-    a:visited {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
 
-    a:hover {
-      color: gray;
-    }
   </style>
 </head>
+<script>
+  function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+      queryEnd = url.indexOf("#") + 1 || url.length + 1,
+      query = url.slice(queryStart, queryEnd - 1),
+      pairs = query.replace(/\+/g, " ").split("&"),
+      parms = {}, i, n, v, nv;
+
+    if (query === url || query === "") return;
+
+    for (i = 0; i < pairs.length; i++) {
+      nv = pairs[i].split("=", 2);
+      n = decodeURIComponent(nv[0]);
+      v = decodeURIComponent(nv[1]);
+
+      if (!parms.hasOwnProperty(n)) parms[n] = [];
+      parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
+  }
+</script>
 
 <body>
 
   <nav class="navbar navbar-expand-md bg-danger navbar-dark">
     <a class="navbar-brand" onClick="window.location.reload()">Croatian News</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon">
-
-      </span>
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
@@ -43,35 +53,9 @@
   </nav>
   <br>
 
-  <p id="demo"></p>
-
-  <script>
-    
+  <p id="demo">poz</p>
 
 
-    var url = 'https://newsapi.org/v2/top-headlines?' +
-      'country=us&' +
-      'apiKey=0f2a5abc1ac1464fafb1ba014d50e0ea';
-
-    async function getNews() {
-
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-
-      var text = "";
-      var i;
-
-      for (i = 0; i < 8; i++) {
-        text += '<a href="DetailedView.html"><div class="container"><h2>' + data.articles[i].title + '</h2><p>' + data.articles[i].description + '</p><img class="img-fluid" src=' + data.articles[i].urlToImage + ' width="460" height="345"> </div></a>'
-      }
-
-      document.getElementById('demo').innerHTML = text;
-    }
-
-    getNews();
-
-  </script>
 
 </body>
 

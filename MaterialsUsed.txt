@@ -3,7 +3,7 @@ https://www.youtube.com/watch?v=IHjzyhjKxtc
 https://www.youtube.com/watch?v=tc8DU14qX6I
 https://www.youtube.com/watch?v=uxf0--uiX0I&t=779s
 https://www.w3schools.com/
-
+https://stackoverflow.com/questions/814613/how-to-read-get-data-from-a-url-using-javascript
 
 
 
