@@ -43,30 +43,37 @@
   </nav>
   <br>
 
-  <p id="demo"></p>
+
+  <p id="Articles"></p>
+
 
   <script>
-    
 
+    var url = 'https://newsapi.org/v2/top-headlines?' + 'country=us&' + 'apiKey=0f2a5abc1ac1464fafb1ba014d50e0ea';
+    var jsonText;
 
-    var url = 'https://newsapi.org/v2/top-headlines?' +
-      'country=us&' +
-      'apiKey=0f2a5abc1ac1464fafb1ba014d50e0ea';
+    function myFunction() {
+      localStorage.setItem("sentArticle", jsonText);
+      //alert(jsonText);
+    }
 
     async function getNews() {
 
       const response = await fetch(url);
+      console.log(response);      
       const data = await response.json();
       console.log(data);
 
       var text = "";
       var i;
 
-      for (i = 0; i < 8; i++) {
-        text += '<a href="DetailedView.html"><div class="container"><h2>' + data.articles[i].title + '</h2><p>' + data.articles[i].description + '</p><img class="img-fluid" src=' + data.articles[i].urlToImage + ' width="460" height="345"> </div></a>'
+      for (i = 0; i < 1; i++) {
+        jsonText = JSON.stringify(data.articles[i]);
+        text += '<a onclick="myFunction()" href="DetailedView.html"><div class="container"><h2>' + data.articles[i].title + '</h2><p>' + data.articles[i].description + '</p><img class="img-fluid" src=' + data.articles[i].urlToImage + ' width="460" height="345"> </div></a>'
+        console.log(text);
       }
 
-      document.getElementById('demo').innerHTML = text;
+      document.getElementById('Articles').innerHTML = text;
     }
 
     getNews();

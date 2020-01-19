@@ -51,11 +51,21 @@
       </ul>
     </div>
   </nav>
-  <br>
 
-  <p id="demo">poz</p>
+  <p id="result">poz</p>
 
 
+
+
+
+  <script>
+
+    var jsonObject = JSON.parse(localStorage.getItem("sentArticle"));
+
+    document.getElementById("result").innerHTML = jsonObject.title;
+
+
+  </script>
 
 </body>
 
