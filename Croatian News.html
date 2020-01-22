@@ -17,6 +17,12 @@
       cursor: pointer;
     }
 
+    .overflow{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     a:hover {
       color: gray;
     }
@@ -47,36 +53,65 @@
   <p id="Articles"></p>
 
 
+
+  <footer class="page-footer font-small">
+
+
+    <div class="footer text-right bg-danger">
+      <p class="navbar-brand">Dominik Matković 2020</p><a class="navbar-brand" href="https://github.com/matkomatko">
+        GitHub</a>
+    </div>
+
+
+  </footer>
+
+
   <script>
 
     var url = 'https://newsapi.org/v2/top-headlines?' + 'country=us&' + 'apiKey=0f2a5abc1ac1464fafb1ba014d50e0ea';
-    var jsonText;
+    var jsonText = [];
 
-    function myFunction() {
-      localStorage.setItem("sentArticle", jsonText);
-      //alert(jsonText);
+
+
+    function SendJson(index) {
+      localStorage.setItem("sentArticle", jsonText[index]);
+      //alert(jsonText[index]);
     }
 
     async function getNews() {
 
+      function ReturnArticle(i) {
+        //alert("s");
+        jsonText.push(JSON.stringify(data.articles[i]));
+        return articleString = '<a onclick="SendJson(' + i + ')" href="DetailedView.html"><div class="container-fluid"><h2 class="overflow">' + data.articles[i].title + '</h2><img class="img-fluid" src=' + data.articles[i].urlToImage + '> </div></a>';
+      }
+
       const response = await fetch(url);
-      console.log(response);      
+      //console.log(response);      
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
 
       var text = "";
-      var i;
 
-      for (i = 0; i < 1; i++) {
-        jsonText = JSON.stringify(data.articles[i]);
-        text += '<a onclick="myFunction()" href="DetailedView.html"><div class="container"><h2>' + data.articles[i].title + '</h2><p>' + data.articles[i].description + '</p><img class="img-fluid" src=' + data.articles[i].urlToImage + ' width="460" height="345"> </div></a>'
-        console.log(text);
+      /*
+      for (var i = 0; i < 8; i++) {
+        jsonText.push(JSON.stringify(data.articles[i]));
+        text += ReturnArticle(i);
+        //console.log(text);
       }
+      */
+
+      text += '<div class="row"><div class="col-sm-8">' + ReturnArticle(0) + '</div><div class="col-sm-4"><div class="col">' + ReturnArticle(1) + '</div><div class="col">' + ReturnArticle(2) + '</div></div></div>';
+      text += '<div class="row"><div class="col-sm-6"><div class="col">' + ReturnArticle(4) + '</div><div class="col">' + ReturnArticle(5) + '</div></div><div class="col-sm-6"><div class="col">' + ReturnArticle(6) + '</div><div class="col">' + ReturnArticle(7) + '</div></div></div>';
+
+
+
 
       document.getElementById('Articles').innerHTML = text;
     }
 
     getNews();
+
 
   </script>
 
