@@ -1,6 +1,8 @@
 Used to learn about javascript, bootstrap, fetch(), await, async, json...
-https://www.youtube.com/watch?v=IHjzyhjKxtc
-https://www.youtube.com/watch?v=tc8DU14qX6I
-https://www.youtube.com/watch?v=uxf0--uiX0I&t=779s
+https://www.youtube.com/watch?v=IHjzyhjKxtc - Promises and fetch
+https://www.youtube.com/watch?v=tc8DU14qX6I - More fetch(async, await) and APIs
+https://www.youtube.com/watch?v=uxf0--uiX0I&t=779s - Json
+https://www.w3schools.com/js/default.asp
 https://www.w3schools.com/jsref/event_onclick.asp
 https://www.w3schools.com/html/html5_webstorage.asp
+https://www.w3schools.com/bootstrap4/default.asp
