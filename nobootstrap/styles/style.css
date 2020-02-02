@@ -1,5 +1,11 @@
 
-
+  .navbarlink:hover {
+    text-decoration: underline;
+  }
+  .navbarlink {
+    text-decoration: none;
+    color: white;
+  }
 
   .GitHubLink:link,
   .GitHubLink:visited {
@@ -43,5 +49,21 @@
     font-size: large;
   }
   
+  ul.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  ul.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 
+  .imgcenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
   
